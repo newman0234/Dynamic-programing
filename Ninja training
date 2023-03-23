@@ -1,0 +1,21 @@
+int ninjaTraining(int n, vector<vector<int>> &points)
+{
+    // Write your code here.
+    //int n=points.size();
+   pair<int,pair<int,int>>p;
+   p.first=points[0][0];
+   p.second.first=points[0][1];
+   p.second.second=points[0][2];
+   for(int i=1;i<n;i++){
+       int val1=points[i][0]+max(p.second.first,p.second.second);
+       int val2=points[i][1]+max(p.first,p.second.second);
+       int val3=points[i][2]+max(p.first,p.second.first);
+       p.first=val1;
+       p.second.first=val2;
+       p.second.second=val3;
+
+   }
+   int ans=max(p.first,max(p.second.first,p.second.second));
+   return ans;
+
+}
